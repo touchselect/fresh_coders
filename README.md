@@ -1,24 +1,30 @@
-# README
+# FreshCoders
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+プログラミング初学者同士が情報を共有し、助け合いながら成長するためのコミュニティサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+プログラミング初学者は学習の過程でさまざまな困難に直面することがあります。しかし、同じような経験を持つ仲間と交流し、知識や経験を共有することで、お互いの成長を促進できます。また、質問や疑問を解決するためのリソースやサポートが手軽に利用できるコミュニティが必要ではないかと考えました。
 
-* Ruby version
+### ターゲットユーザー
+- プログラミング初学者（学生、転職希望者、自己学習者など）
+- コーディングやソフトウェア開発に興味のある人
 
-* System dependencies
+### 主な利用シーン
+- プログラミングに関する質問や疑問を解決するためのフォーラム利用
+- 自身のプロジェクトや作品を共有し、フィードバックを得る
+- 学習リソースやチュートリアルの共有、おすすめの学習教材の情報収集
+- オンラインイベントやハッカソンへの参加募集や情報共有
+- プログラミングに関連するニュースやトレンドの共有と議論
 
-* Configuration
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
