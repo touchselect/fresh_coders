@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    @post.user_id = currrent_user.id
+    @post.user_id = current_user.id
     @post.save
     redirect_to posts_path
   end
@@ -14,9 +14,13 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
   end
   
+  def show
+    @post = Post.find(params[:id])
+  end
+  
   private
   
   def post_params
-    params.require(:post).permit(:title, :content, :post_image)
+    params.require(:post).permit(:title, :content, :post_image, :body)
   end
 end

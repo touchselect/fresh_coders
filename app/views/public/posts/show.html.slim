@@ -1,0 +1,9 @@
+.container
+  .row
+    div
+      - if @post.post_image.attached?
+        = image_tag @post.get_post_image(300, 100)
+      p = @post.title
+      p = @post.user.name
+      p = @post.content
+      = @post.body

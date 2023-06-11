@@ -2,5 +2,9 @@
   .row
     div
       h2 Posts
-      table.table
-        tr
+      - @posts.each do |post|
+        div
+          - if post.post_image.attached?
+            = image_tag post.get_post_image(300, 100)
+          p = post.title
+          p = post.user.name
