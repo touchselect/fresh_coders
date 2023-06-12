@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_rich_text :body
+  has_rich_text :content
   has_one_attached :post_image
   belongs_to :user
   has_many :favorites, dependent: :destroy

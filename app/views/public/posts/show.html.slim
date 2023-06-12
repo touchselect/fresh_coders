@@ -1,9 +1,11 @@
 .container
   .row
     div
-      - if @post.post_image.attached?
-        = image_tag @post.get_post_image(300, 100)
-      p = @post.title
-      p = @post.user.name
-      p = @post.content
-      = @post.body
+      h2 = @post.title
+      p 投稿者 #{@post.user.name}
+      p = @post.created_at.strftime('%Y/%m/%d')
+      div
+        = @post.content
+      - if @post.user == current_user
+        = link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger'
+          
