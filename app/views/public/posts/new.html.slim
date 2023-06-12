@@ -1,0 +1,13 @@
+.container
+  .form
+    h1 投稿フォーム
+    = form_with(model: @post, local: true) do |f|
+      h4 サムネイル画像
+      = f.file_field :post_image, accept: "image/*"
+      h4 タイトル
+      = f.text_field :title
+      h4 コンテンツ
+      .field
+        = f.label :content
+        = f.rich_text_area :content
+      = f.submit "投稿"

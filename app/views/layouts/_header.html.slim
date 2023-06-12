@@ -1,0 +1,38 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  div.container
+    a.navbar-brand href='/'
+      span FreshCoders
+    button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'
+      span.navbar-toggler-icon
+    div.collapse.navbar-collapse#navbarNavDropdown
+      ul.navbar-nav.ml-auto
+        - if user_signed_in?
+          li.nav-item
+            = link_to(user_path(current_user.id), class: 'nav-link') do
+              i.fas.fa-home
+              span Home
+          li.nav-item
+            = link_to(new_post_path, class: 'nav-link') do
+              i.fas.fa-users
+              span Create Post
+          li.nav-item
+            = link_to(posts_path, class: 'nav-link') do
+              i.fas.fa-book-open
+              span Posts
+          li.nav-item
+            = link_to(destroy_user_session_path, method: :delete, class: 'nav-link') do
+              i.fas.fa-sign-out-alt
+              span Log out
+        - else
+          li.nav-item
+            = link_to(root_path, class: 'nav-link') do
+              i.fas.fa-home
+              span Home
+          li.nav-item
+            = link_to(new_user_registration_path, class: 'nav-link') do
+              i.fas.fa-user-plus
+              span Sign up
+          li.nav-item
+            = link_to(new_user_session_path, class: 'nav-link') do
+              i.fas.fa-sign-in-alt
+              span Log in

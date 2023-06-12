@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title FreshCoders
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    script src="https://kit.fontawesome.com/f43e55bc24.js" crossorigin="anonymous"
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    = render 'layouts/header'
+    = yield
+    = render 'layouts/footer'

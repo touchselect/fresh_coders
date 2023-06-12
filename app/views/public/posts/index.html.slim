@@ -1,0 +1,11 @@
+.container
+  .row
+    div
+      h2 Posts
+      - @posts.each do |post|
+        div
+          - if post.post_image.attached?
+            = image_tag post.get_post_image(300, 100)
+          = link_to post_path(post.id) do
+            p = post.title
+          p = post.user.name
