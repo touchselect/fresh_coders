@@ -4,9 +4,11 @@
       h2 = @post.title
       p 投稿者 #{@post.user.name}
       p = @post.created_at.strftime('%Y/%m/%d')
-      div
+      .content
         = @post.content
-      - if @post.user == current_user
-        = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
-        = link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger'
-          
+      .link-btn
+        - if @post.user == current_user
+          = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
+          = link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger'
+      = render 'public/comments/index', post: @post
+      = render 'public/comments/form', post: @post, comment: @comment
