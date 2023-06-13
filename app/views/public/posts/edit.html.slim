@@ -1,6 +1,6 @@
 .container
   .form
-    h1 投稿フォーム
+    h1 投稿の編集
     = form_with(model: @post, local: true) do |f|
       h4 サムネイル画像
       = f.file_field :post_image, accept: "image/*"

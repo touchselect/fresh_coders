@@ -1,0 +1,19 @@
+.container
+  .row
+    h2 プロフィール編集
+    div
+      = form_with(model: @user) do |f|
+        .field
+          = f.label :email
+          br
+          = f.email_field :email
+        .field
+          = f.label :name
+          br
+          = f.text_field :name
+        .field
+          = f.label :user_image
+          br
+          = f.file_field :user_image, accept: "image/*"
+        .actions
+          = f.submit "変更を保存"

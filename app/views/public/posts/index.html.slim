@@ -8,4 +8,7 @@
             = image_tag post.get_post_image(300, 100)
           = link_to post_path(post.id) do
             p = post.title
-          p = post.user.name
+          = link_to user_path(post.user_id)
+            div
+              = image_tag post.user.get_user_image(100, 100)
+              p = post.user.name
