@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
   
   def edit
@@ -25,7 +26,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post)
+    redirect_to post_path(@post.id)
   end
   
   def destroy
