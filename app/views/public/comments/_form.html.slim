@@ -1,4 +1,4 @@
 .create-comment
-  = form_with model: [post, comment], local: false do |f|
-    = f.text_area :comment, class: 'form-control'
+  = form_with model: [post, comment], local: false, remote: true do |f|
+    = f.text_area :comment, class: 'form-control comment-textarea'
     = f.submit "コメントする"

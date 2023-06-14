@@ -10,5 +10,10 @@
         - if @post.user == current_user
           = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
           = link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger'
-      = render 'public/comments/index', post: @post
+      div class="favorite-#{@post.id}"
+        = render "public/favorites/btn", post: @post
+      .comments-counter
+        p = "コメント数: #{@post.comments.count}"
+      .comments-index
+        = render 'public/comments/index', post: @post
       = render 'public/comments/form', post: @post, comment: @comment
