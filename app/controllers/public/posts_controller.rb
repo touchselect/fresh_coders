@@ -11,7 +11,12 @@ class Public::PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    @query = params[:query]
+    if params[:query].present?
+      @posts = Post.search(params[:query]).order(created_at: :desc)
+    else
+      @posts = Post.order(created_at: :desc)
+    end
   end
   
   def show

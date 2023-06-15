@@ -1,7 +1,10 @@
 .container
   .row
     div
-      h2 Posts
+      - if @query
+        h2 = "”#{@query}”の検索結果"
+      - else
+        h2 Posts
       - @posts.each do |post|
         div
           - if post.post_image.attached?
