@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
       resource :follows, only: [:create, :destroy]
     end
+    get 'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
     get 'users/:id/following' => 'users#following', as: 'user_following'
     get 'users/:id/followed' => 'users#followed', as: 'user_followed'
     get 'users/:id/confirm' => 'users#confirm', as: 'user_confirm'

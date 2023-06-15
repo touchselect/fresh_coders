@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_one_attached :post_image
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites
   has_many :comments, dependent: :destroy
   belongs_to :category, optional: true
   

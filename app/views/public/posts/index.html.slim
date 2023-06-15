@@ -1,6 +1,13 @@
 .container
   .row
-    div
+    .col-md-3.offset-md-1
+      nav
+        h4 カテゴリ
+        - @categories.each do |category|
+          div
+            = link_to 
+              = category.name
+    .col-md-8
       - if @query
         h2 = "”#{@query}”の検索結果"
       - else

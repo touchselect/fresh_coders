@@ -11,6 +11,7 @@ class Public::PostsController < ApplicationController
   end
   
   def index
+    @categories = Category.all
     @query = params[:query]
     if params[:query].present?
       @posts = Post.search(params[:query]).order(created_at: :desc)
@@ -43,6 +44,6 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :content, :post_image)
+    params.require(:post).permit(:title, :content, :post_image, :category_id)
   end
 end
