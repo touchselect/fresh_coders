@@ -9,7 +9,25 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
   
+  has_many :active_follows, class_name: 'Follow', foreign_key: 'active_follow_id', dependent: :destroy
+  has_many :passive_follows, class_name: 'Follow', foreign_key: 'passive_follow_id', dependent: :destroy
+
+  has_many :following, through: :active_follows, source: :passive_followed
+  has_many :followers, through: :passive_follows, source: :active_follower
+  
   has_one_attached :user_image
+  
+  def follow(user)
+    active_follows.create(passive_followed: user)
+  end
+  
+  def unfollow(user)
+    active_follows.find_by(passive_followed: user).destroy
+  end
+
+  def following?(user)
+    following.include?(user)
+  end
   
   def get_user_image(width, height)
     unless user_image.attached?

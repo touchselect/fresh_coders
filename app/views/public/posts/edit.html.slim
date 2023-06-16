@@ -2,6 +2,8 @@
   .form
     h1 投稿の編集
     = form_with(model: @post, local: true) do |f|
+      h4 カテゴリー
+      = f.collection_select :category_id, Category.all, :id, :name, include_blank: true, selected: @post.category_id
       h4 サムネイル画像
       = f.file_field :post_image, accept: "image/*"
       h4 タイトル

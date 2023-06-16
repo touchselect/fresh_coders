@@ -14,11 +14,12 @@
           = link_to edit_user_path(@user.id), class: 'btn btn-success' do
             | プロフィール編集
     .col-md-8
-      h3 #{@user.name}さんの投稿一覧
-      - @posts.each do |post|
-        div
-          - if post.post_image.attached?
-            = image_tag post.get_post_image(300, 100)
-          = link_to post_path(post.id) do
-            p = post.title
-          p = post.user.name
+      h3 #{@user.name}さんのフォロー一覧
+      - if @users.exists?
+        - @users.each do |user|
+          div
+            = image_tag user.get_user_image(100, 100)
+            = link_to user_path(user.id) do
+              p = user.name
+      - else
+        p ユーザーはいません

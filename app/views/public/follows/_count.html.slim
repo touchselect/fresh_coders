@@ -1,0 +1,4 @@
+= link_to user_following_path(user) do
+  p = "フォロー数: #{@user.following.count}"
+= link_to user_followed_path(user) do
+  p = "フォロワー数: #{@user.followers.count}"
