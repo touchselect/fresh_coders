@@ -25,6 +25,16 @@ class Public::UsersController < ApplicationController
     @draft_posts = Post.with_inactive(@user.id)
   end
   
+  def following
+    @user = User.find(params[:id])
+		@users = @user.following
+  end
+
+  def followed
+    @user = User.find(params[:id])
+		@users = @user.followers
+  end
+  
   private
   
   def user_params
