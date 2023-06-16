@@ -5,11 +5,13 @@
         h4 カテゴリ
         - @categories.each do |category|
           div
-            = link_to 
+            = link_to posts_path(category_id: category.id), class: "category-link" do
               = category.name
     .col-md-8
       - if @query
-        h2 = "”#{@query}”の検索結果"
+        h2 = "キーワード”#{@query}”の検索結果"
+      -elsif @category
+        h2 = "カテゴリー”#{@category.name}”の検索結果"
       - else
         h2 Posts
       - @posts.each do |post|

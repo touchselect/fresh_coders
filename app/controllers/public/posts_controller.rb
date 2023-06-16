@@ -6,15 +6,21 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    if params[:draft_button] == "true"
+      @post.is_active = false
+    end
     @post.save
     redirect_to posts_path
   end
   
   def index
     @categories = Category.all
-    @query = params[:query]
     if params[:query].present?
       @posts = Post.search(params[:query]).order(created_at: :desc)
+      @query = params[:query]
+    elsif params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts
     else
       @posts = Post.order(created_at: :desc)
     end
@@ -31,6 +37,9 @@ class Public::PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
+    if params[:draft_button] == "true"
+      @post.is_active = false
+    end
     @post.update(post_params)
     redirect_to post_path(@post.id)
   end
