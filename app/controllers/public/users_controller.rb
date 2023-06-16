@@ -15,6 +15,16 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(@user)
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    @favorite_posts = @user.favorite_posts
+  end
+  
+  def drafts
+    @user = User.find(params[:id])
+    @draft_posts = Post.with_inactive(@user.id)
+  end
+  
   private
   
   def user_params

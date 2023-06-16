@@ -4,19 +4,17 @@
       .mx-auto
         h3 = @user.name
         = image_tag @user.get_user_image(100, 100)
-        = link_to user_favorites_path(@user.id), class: 'btn btn-primary' do
-          | いいね一覧
+        = link_to user_path(@user.id), class: 'btn btn-primary' do
+          | 投稿一覧
         - if @user == current_user
-          = link_to user_drafts_path(@user.id), class: "btn btn-secondary" do
-            | 下書き一覧
           = link_to edit_user_path(@user.id), class: 'btn btn-success' do
             | プロフィール編集
     .col-md-8
-      h3 #{@user.name}さんの投稿一覧
-      - @posts.each do |post|
+      h3 #{@user.name}さんの下書き一覧
+      - @draft_posts.each do |post|
         div
           - if post.post_image.attached?
             = image_tag post.get_post_image(300, 100)
-          = link_to post_path(post.id) do
+          = link_to post_draft_path(post_id: post.id) do
             p = post.title
           p = post.user.name
