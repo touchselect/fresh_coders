@@ -39,6 +39,9 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if params[:draft_button] == "true"
       @post.is_active = false
+      @post.update(post_params)
+      redirect_to post_draft_path(@post.id)
+      return
     end
     @post.update(post_params)
     redirect_to post_path(@post.id)

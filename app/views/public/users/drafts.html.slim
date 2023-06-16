@@ -15,6 +15,6 @@
         div
           - if post.post_image.attached?
             = image_tag post.get_post_image(300, 100)
-          = link_to post_path(post.id) do
+          = link_to post_draft_path(post_id: post.id) do
             p = post.title
           p = post.user.name

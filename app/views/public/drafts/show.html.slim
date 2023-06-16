@@ -1,6 +1,7 @@
 .container
   .row
     div
+      h1 下書き
       h2 = @post.title
       p 投稿者 #{@post.user.name}
       p = @post.created_at.strftime('%Y/%m/%d')
@@ -8,12 +9,6 @@
         = @post.content
       .link-btn
         - if @post.user == current_user
-          = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
-          = link_to "削除", post_path(@post), method: :delete, class: 'btn btn-danger'
-      div class="favorite-#{@post.id}"
-        = render "public/favorites/btn", post: @post
-      .comments-counter
-        p = "コメント数: #{@post.comments.count}"
-      .comments-index
-        = render 'public/comments/index', post: @post
-      = render 'public/comments/form', post: @post, comment: @comment
+          = link_to "編集", edit_post_draft_path(@post), class: 'btn btn-success'
+          = link_to "削除", post_draft_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+          = link_to "下書き一覧に戻る", user_drafts_path(current_user), class: 'btn btn-secondary'
