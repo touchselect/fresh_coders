@@ -63,6 +63,7 @@ gem 'html2slim'
 gem 'actiontext'
 
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end
