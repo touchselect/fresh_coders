@@ -1,0 +1,15 @@
+.container
+  .form
+    h1 投稿フォーム
+    = form_with(model: @post, local: true) do |f|
+      h4 カテゴリー
+      = f.collection_select :category_id, Category.all, :id, :name, include_blank: true
+      h4 サムネイル画像
+      = f.file_field :post_image, accept: "image/*"
+      h4 タイトル
+      = f.text_field :title
+      h4 コンテンツ
+      .field
+        = f.rich_text_area :content
+      = f.submit "投稿", class: "btn btn-primary"
+      = f.button "下書き保存", name: "draft_button", value: "true", class: "btn btn-secondary"
