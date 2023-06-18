@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    @category = Category.new
   end
   
   def create
@@ -58,4 +59,5 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content, :post_image, :category_id)
   end
+
 end

@@ -19,10 +19,12 @@ Rails.application.routes.draw do
       resources :comments,  only: [:create, :destroy]
       resource  :draft,     only: [:show, :edit,:update, :destroy]
     end
+    resource :category, only: [:create]
   end
 
   namespace :admin do
     root to: 'homes#top'
+    get   'homes/menu'          => 'homes#menu',      as: 'admin_menu'
     resources :users,    only: [:index, :show, :edit, :update]
     resources :comments, only: [:destroy]
   end
