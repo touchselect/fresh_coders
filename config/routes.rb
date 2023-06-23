@@ -24,9 +24,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    get   'homes/menu'          => 'homes#menu',      as: 'admin_menu'
+    get   'homes/menu'          => 'homes#menu',      as: 'menu'
     resources :users,    only: [:index, :show, :edit, :update]
-    resources :comments, only: [:destroy]
+    get   'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
+    get   'users/:id/drafts'    => 'users#drafts',    as: 'user_drafts'
+    get   'users/:id/following' => 'users#following', as: 'user_following'
+    get   'users/:id/followed'  => 'users#followed',  as: 'user_followed'
+    resources :posts,    only: [:index, :show, :destory] do
+      resources :comments,  only: [:destroy]
+      resource  :draft,     only: [:show, :edit,:update, :destroy]
+    end
+    resources :categories, only: [:create, :index, :edit, :update, :destroy]
   end
 
   

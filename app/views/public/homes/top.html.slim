@@ -1,11 +1,15 @@
-.container
+.container.main
   .row
-    .main.mx-auto.my-auto
-      h1 FreshCoders
+    .main.mx-auto.my-auto.text-center
+      h1.freshcoders-heading FreshCoders
       p 駆け出しエンジニアのためのコミュニティサイト
+
   .row
-    .about.mx-auto.my-auto
+    .about.mx-auto.my-auto.text-center
       p FreshCodersは学生、転職希望者、自己学習者などのプログラミング初学者たちの交流サイトです。
       p 初学者ならではの悩みや情報を共有し、ともにスキル向上を目指しましょう！
-      = link_to posts_path, class: 'btn btn-success mx-auto' do
+
+  .row
+    .action-button.mx-auto.text-center
+      = link_to posts_path, class: 'btn btn-success' do
         | FreshCodersに参加する

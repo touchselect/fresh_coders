@@ -1,30 +1,51 @@
-nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+nav.navbar.navbar-expand-lg.custom-header
   .container
-    a.navbar-brand href='/'
-      span FreshCoders
+    - if admin_signed_in?
+      a.navbar-brand href='/admin'
+        span.freshcoders-logo FreshCoders
+    - else
+      a.navbar-brand href='/'
+        span.freshcoders-logo FreshCoders
     button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'
       span.navbar-toggler-icon
     .collapse.navbar-collapse#navbarNavDropdown
       ul.navbar-nav.ml-auto
         li.nav-item
-         = form_with(url: posts_path, class: "form-inline", method: :get) do |f|
-          .input-group
-            = f.text_field :query, value: params[:query], class: "form-control custom-input", placeholder: "検索", aria_label: "検索"
-            .input-group-append
-              = button_tag type: 'submit', class: 'btn btn-primary' do
-                i.fas.fa-search
-        - if user_signed_in?
+          = form_with(url: posts_path, class: "form-inline", method: :get) do |f|
+            .input-group
+              = f.text_field :query, value: params[:query], class: "form-control custom-input", placeholder: "検索", aria_label: "検索"
+              .input-group-append
+                = button_tag type: 'submit', class: 'btn btn-primary' do
+                  i.fas.fa-search
+        - if admin_signed_in?
+          li.nav-item
+            = link_to(admin_users_path, class: 'nav-link') do
+              i.fas.fa-home
+              span Users
+          li.nav-item
+            = link_to(admin_categories_path, class: 'nav-link') do
+              i.fas.fa-cogs
+              span Categories
+          li.nav-item
+            = link_to(posts_path, class: 'nav-link') do
+              i.fas.fa-newspaper
+              span Posts
+          li.nav-item
+            = link_to(destroy_admin_session_path, method: :delete, class: 'nav-link') do
+              i.fas.fa-sign-out-alt
+              span Log out
+        - elsif user_signed_in?
           li.nav-item
             = link_to(user_path(current_user.id), class: 'nav-link') do
               i.fas.fa-home
               span Home
           li.nav-item
             = link_to(new_post_path, class: 'nav-link') do
-              i.fas.fa-users
+              i.fas.fa-pencil-alt
               span Create Post
           li.nav-item
             = link_to(posts_path, class: 'nav-link') do
-              i.fas.fa-book-open
+              i.fas.fa-newspaper
               span Posts
           li.nav-item
             = link_to(destroy_user_session_path, method: :delete, class: 'nav-link') do
@@ -35,6 +56,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             = link_to(root_path, class: 'nav-link') do
               i.fas.fa-home
               span Home
+          li.nav-item
+            = link_to(posts_path, class: 'nav-link') do
+              i.fas.fa-newspaper
+              span Posts
           li.nav-item
             = link_to(new_user_registration_path, class: 'nav-link') do
               i.fas.fa-user-plus

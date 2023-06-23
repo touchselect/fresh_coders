@@ -1,0 +1,16 @@
+.container.w-50
+  h5.d-inline.ighlight カテゴリー一覧
+  .my-4.w-75
+    table.table
+      tr
+        th.text-center カテゴリー
+        th
+      - @categories.each do |category|
+        tr
+          td
+            = category.name
+          td.text-center
+            = link_to edit_admin_category_path(category) do
+              button.btn.btn-success 編集する
+            = link_to admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' } do
+              button.btn.btn-danger 削除

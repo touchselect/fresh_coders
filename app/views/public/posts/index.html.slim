@@ -1,26 +1,53 @@
 .container
   .row
     .col-md-3.offset-md-1
-      nav
-        h4 カテゴリ
-        - @categories.each do |category|
-          div
-            = link_to posts_path(category_id: category.id), class: "category-link" do
-              = category.name
+      table.category-table
+        thead
+          tr
+            th カテゴリ
+        tbody
+          - @categories.each do |category|
+            tr
+              td.category-cell
+                = link_to posts_path(category_id: category.id), class: "category-link" do
+                  = category.name
     .col-md-8
       - if @query
-        h2 = "キーワード”#{@query}”の検索結果"
-      -elsif @category
-        h2 = "カテゴリー”#{@category.name}”の検索結果"
+        h2 = "キーワード ”#{@query}” の検索結果"
+      - elsif @category
+        h2 = "カテゴリー ”#{@category.name}” の検索結果"
       - else
         h2 Posts
       - @posts.each do |post|
-        div
-          - if post.post_image.attached?
-            = image_tag post.get_post_image(300, 100)
-          = link_to post_path(post.id) do
-            p = post.title
-          = link_to user_path(post.user_id)
-            div
-              = image_tag post.user.get_user_image(100, 100)
-              p = post.user.name
+        .card.my-2
+          .row.no-gutters
+            .col-md-3
+              - if post.post_image.attached?
+                = image_tag post.get_post_image(1920, 1080), class: "card-img-top"
+            .col-md-3
+              .user-info
+                .user-info-wrapper
+                  .d-flex.align-items-center
+                    .user-info-table
+                      table
+                        tbody
+                          tr
+                            td
+                              = link_to user_path(post.user_id), class: "card-link" do
+                                = image_tag post.user.get_user_image(20, 20), class: "user-image"
+                            td
+                              = link_to user_path(post.user_id), class: "card-link" do
+                                span.user-name = post.user.name
+                          tr
+                            td
+                              span.favorite-count
+                                i.far.fa-heart
+                                = post.favorites.count
+                            td
+                              span.comment-count
+                                i.far.fa-comment
+                                = post.comments.count
+            .col-md-6
+              .card-body
+                = link_to post_path(post.id), class: "card-title" do
+                  p.post-title = post.title
