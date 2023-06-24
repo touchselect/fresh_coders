@@ -1,14 +1,6 @@
 .container
   .row
-    .col-md-3.offset-md-1
-      .mx-auto
-        h3 = @user.name
-        = image_tag @user.get_user_image(100, 100)
-        = link_to user_path(@user.id), class: 'btn btn-primary' do
-          | 投稿一覧
-        - if @user == current_user
-          = link_to edit_user_path(@user.id), class: 'btn btn-success' do
-            | プロフィール編集
+    = render 'info', user: @user
     .col-md-8
       h3 #{@user.name}さんのいいねした投稿一覧
       - @favorite_posts.each do |post|

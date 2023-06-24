@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow-lg rounded px-0 my-5">
-      <h5 class="text-dark bg-light py-4 mb-0">ユーザーログイン</h5>
+      <h5 class="text-dark bg-light py-4 mb-0">新規登録</h5>
       <div class="form-body p-4">
         <div class="mx-auto text-center">
-          <p>メールアドレスと<br>パスワードを入力してください。</p>
+          <p>ユーザー名・メールアドレス<br>パスワードを入力してください。</p>
         </div>
         <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>

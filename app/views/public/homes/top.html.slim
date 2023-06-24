@@ -9,7 +9,17 @@
       p.big-text FreshCodersは学生、転職希望者、自己学習者などのプログラミング初学者たちの交流サイトです。
       p.big-text 初学者ならではの悩みや情報を共有し、ともにスキル向上を目指しましょう！
 
+  .row.text-center.mb-3
+    .col
+      = link_to new_user_registration_path, class: 'btn btn-success btn-lg btn-equal-width' do
+        | FreshCodersに参加する
+  
+  .row.text-center.mb-3
+    .col
+      = link_to posts_path, class: 'btn btn-primary btn-lg btn-equal-width' do
+        | FreshCodersを覗いてみる
+  
   .row.text-center
     .col
-      = link_to posts_path, class: 'btn btn-success btn-lg' do
-        | FreshCodersに参加する
+      = link_to users_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-lg btn-equal-width' do
+        | ゲストログイン（閲覧用）
