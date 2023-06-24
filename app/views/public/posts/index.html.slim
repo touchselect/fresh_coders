@@ -18,36 +18,36 @@
         h2 = "カテゴリー ”#{@category.name}” の検索結果"
       - else
         h2 Posts
-      - @posts.each do |post|
-        .card.my-2
-          .row.no-gutters
-            .col-md-3
-              - if post.post_image.attached?
-                = image_tag post.get_post_image(1920, 1080), class: "card-img-top"
-            .col-md-3
-              .user-info
-                .user-info-wrapper
-                  .d-flex.align-items-center
-                    .user-info-table
-                      table
-                        tbody
-                          tr
-                            td
-                              = link_to user_path(post.user_id), class: "card-link" do
-                                = image_tag post.user.get_user_image(20, 20), class: "user-image"
-                            td
-                              = link_to user_path(post.user_id), class: "card-link" do
-                                span.user-name = post.user.name
-                          tr
-                            td
-                              span.favorite-count
-                                i.far.fa-heart
-                                = post.favorites.count
-                            td
-                              span.comment-count
-                                i.far.fa-comment
-                                = post.comments.count
-            .col-md-6
-              .card-body
-                = link_to post_path(post.id), class: "card-title" do
-                  p.post-title = post.title
+      .row.row-cols-2
+        - @posts.each do |post|
+          .col.my-3
+            .card.w-100.shadow
+              .row.no-gutters
+                = image_tag post.get_post_image(1920, 1080), class: "card-img-top fixed-size-image"
+              .row
+                .col-md-4
+                  .user-info.d-flex.align-items-center
+                    .user-info-wrapper
+                      .user-info-table
+                        table
+                          tbody
+                            tr.tr-span
+                              td
+                                = link_to user_path(post.user_id), class: "card-link" do
+                                  = image_tag post.user.get_user_image(20, 20), class: "user-image"
+                              td
+                                = link_to user_path(post.user_id), class: "card-link" do
+                                  span.user-name = post.user.name
+                            tr
+                              td
+                                span.favorite-count
+                                  i.far.fa-heart
+                                  = post.favorites.count
+                              td
+                                span.comment-count
+                                  i.far.fa-comment
+                                    = post.comments.count
+                .col-md-8
+                  .card-body
+                    = link_to post_path(post.id), class: "card-title" do
+                      p.post-title = post.title

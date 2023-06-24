@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
+  
   .custom-header {
-    background: linear-gradient(to right, #000000, #0000FF, #008000);
+    background: linear-gradient(to right, #20e0ff, #20c2ff);
   }
 
   .custom-header .navbar-brand,
@@ -23,7 +24,7 @@
   }
 
   .custom-footer {
-    background-color: #000000;
+    background: linear-gradient(to right, #20e0ff, #169cb2);
     color: #FFFFFF;
     padding: 15px 0;
     text-align: center;
@@ -74,13 +75,42 @@
   color: #000000;
   }
   
-  .card-img-top {
-    max-width: 150px;
-    max-height: 100px;
+  /*.card-img-top {*/
+  /*  max-width: 150px;*/
+  /*  max-height: 100px;*/
+  /*}*/
+  
+  .fixed-size-image {
+  object-fit: cover;
+  width: 100%;
+  height: 200px; /* 適宜、表示サイズに合わせて調整してください */
   }
+
   
   .post-title {
     font-size: 24px;
     color: #000000;
     
+  }
+  
+  .user-info {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container-fluid.main {
+    background-image: url("/assets/top2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 85vh;
+    color: #FFFFFF;
+  }
+  
+  .freshcoders-heading {
+    font-size: 40px; /* 大きな文字サイズに調整 */
+  }
+  
+  .big-text {
+    font-size: 24px; /* 大きな文字サイズに調整 */
   }

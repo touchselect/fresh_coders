@@ -1,15 +1,15 @@
-.container.main
-  .row
-    .main.mx-auto.my-auto.text-center
+.container-fluid.main.d-flex.align-items-center.justify-content-center.flex-column
+  .row.text-center
+    .col
       h1.freshcoders-heading FreshCoders
-      p 駆け出しエンジニアのためのコミュニティサイト
+      p.big-text 駆け出しエンジニアのためのコミュニティサイト
 
-  .row
-    .about.mx-auto.my-auto.text-center
-      p FreshCodersは学生、転職希望者、自己学習者などのプログラミング初学者たちの交流サイトです。
-      p 初学者ならではの悩みや情報を共有し、ともにスキル向上を目指しましょう！
+  .row.text-center
+    .col
+      p.big-text FreshCodersは学生、転職希望者、自己学習者などのプログラミング初学者たちの交流サイトです。
+      p.big-text 初学者ならではの悩みや情報を共有し、ともにスキル向上を目指しましょう！
 
-  .row
-    .action-button.mx-auto.text-center
-      = link_to posts_path, class: 'btn btn-success' do
+  .row.text-center
+    .col
+      = link_to posts_path, class: 'btn btn-success btn-lg' do
         | FreshCodersに参加する

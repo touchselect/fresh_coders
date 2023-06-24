@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  # 会員用
+  devise_for :users, controllers: {
+    registrations: "public/registrations",
+    sessions:      'public/sessions'
+  }
+  
+  devise_scope :users do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+  
+  # 管理者用
+  devise_for :admin, controllers: {
+    sessions:      "admin/sessions"
+  }
   
   scope module: :public do
     root to:  'homes#top'
@@ -8,6 +22,7 @@ Rails.application.routes.draw do
       end
       resource :follows, only: [:create, :destroy]
     end
+    get   'users'               => 'users#dummy'
     get   'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
     get   'users/:id/drafts'    => 'users#drafts',    as: 'user_drafts'
     get   'users/:id/following' => 'users#following', as: 'user_following'
@@ -37,15 +52,4 @@ Rails.application.routes.draw do
     resources :categories, only: [:create, :index, :edit, :update, :destroy]
   end
 
-  
-# 会員用
-devise_for :user, controllers: {
-  registrations: "public/registrations",
-  sessions:      'public/sessions'
-}
-
-# 管理者用
-devise_for :admin, controllers: {
-  sessions:      "admin/sessions"
-}
 end

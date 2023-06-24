@@ -17,6 +17,16 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user)
+  end
+  
+  def dummy
+    redirect_to new_user_registration_path
+  end
 
   protected
 
