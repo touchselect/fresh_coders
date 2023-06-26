@@ -1,4 +1,5 @@
 class Public::CategoriesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @category = Category.new(category_params)
     @category.save
