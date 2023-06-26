@@ -9,8 +9,12 @@ html
     script src="https://kit.fontawesome.com/f43e55bc24.js" crossorigin="anonymous"
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
-  body
-    = render 'layouts/header'
-    = yield
-    = render 'layouts/footer'
+  body.d-flex.flex-column
+    header.fixed-top
+      = render 'layouts/header'
+    .main
+      = yield
+    footer.fixed-bottom
+      = render 'layouts/footer'

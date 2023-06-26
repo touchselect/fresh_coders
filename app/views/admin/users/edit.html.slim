@@ -1,0 +1,26 @@
+.container
+  .row
+    = render 'info', user: @user
+    .col-md-8
+      h2.text-center プロフィール編集
+      div.profile-form
+        = form_with(model: @user) do |f|
+          .form-group
+            = f.label :email
+            br
+            - if @user.guest_user?
+              span.form-control-static = @user.email
+              p.text-muted ゲストユーザーはメールアドレスを変更することはできません
+            - else
+              = f.email_field :email, class: "form-control"
+          .form-group
+            = f.label :name
+            br
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.label :user_image
+            br
+            = f.file_field :user_image, accept: ".jpeg, .png", class: "form-control-file"
+            span.form-control-file-label
+          .text-center
+            = f.submit "変更を保存", class: "btn btn-primary"

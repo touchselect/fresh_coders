@@ -2,9 +2,7 @@
   = link_to post_favorites_path(post), method: :delete, remote: true do
     i.fas.fa-heart aria-hidden="true" style="color: red;"
     = post.favorites.count
-    | いいね
 - else
   = link_to post_favorites_path(post), method: :post, remote: true do
     i.fas.fa-heart aria-hidden="true"
     = post.favorites.count
-    | いいね

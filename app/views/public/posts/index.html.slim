@@ -1,26 +1,22 @@
-.container
+.container.h-100
   .row
     .col-md-3.offset-md-1
-      nav
-        h4 カテゴリ
-        - @categories.each do |category|
-          div
-            = link_to posts_path(category_id: category.id), class: "category-link" do
-              = category.name
+      table.table-borderless.category-table
+        thead
+          tr
+            th 
+              h2 カテゴリ
+        tbody
+          - @categories.each do |category|
+            tr
+              td.category-cell
+                = link_to posts_path(category_id: category.id), class: "category-link", style: "text-decoration: none" do
+                  = category.name
     .col-md-8
       - if @query
-        h2 = "キーワード”#{@query}”の検索結果"
-      -elsif @category
-        h2 = "カテゴリー”#{@category.name}”の検索結果"
+        h2 = "キーワード ”#{@query}” の検索結果"
+      - elsif @category
+        h2 = "カテゴリー ”#{@category.name}” の検索結果"
       - else
-        h2 Posts
-      - @posts.each do |post|
-        div
-          - if post.post_image.attached?
-            = image_tag post.get_post_image(300, 100)
-          = link_to post_path(post.id) do
-            p = post.title
-          = link_to user_path(post.user_id)
-            div
-              = image_tag post.user.get_user_image(100, 100)
-              p = post.user.name
+        h2 投稿一覧
+      = render 'post', posts: @posts

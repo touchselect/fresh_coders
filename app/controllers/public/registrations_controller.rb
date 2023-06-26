@@ -37,6 +37,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  
+  def dummy
+    redirect_to new_user_registration_path
+  end
 
   protected
 

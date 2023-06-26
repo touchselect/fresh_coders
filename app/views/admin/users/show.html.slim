@@ -1,0 +1,6 @@
+.container
+  .row
+    = render 'info', user: @user
+    .col-md-8
+      h3 #{@user.name}さんの投稿一覧
+      = render 'admin/posts/post', posts: @posts
