@@ -2,7 +2,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.includes(:posts).find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(10)
   end
   
   def edit
@@ -17,22 +17,22 @@ class Public::UsersController < ApplicationController
   
   def favorites
     @user = User.find(params[:id])
-    @favorite_posts = @user.favorite_posts
+    @favorite_posts = @user.favorite_posts.page(params[:page]).per(10)
   end
   
   def drafts
     @user = User.find(params[:id])
-    @draft_posts = Post.with_inactive(@user.id)
+    @draft_posts = Post.with_inactive(@user.id).page(params[:page]).per(10)
   end
   
   def following
     @user = User.find(params[:id])
-		@users = @user.following
+		@users = @user.following.page(params[:page]).per(12)
   end
 
   def followed
     @user = User.find(params[:id])
-		@users = @user.followers
+		@users = @user.followers.page(params[:page]).per(12)
   end
   
   private

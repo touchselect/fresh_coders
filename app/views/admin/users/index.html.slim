@@ -22,4 +22,5 @@
                 span.text-success.font-weight-bold 有効
               - else
                 span.text-muted.font-weight-bold 退会
-            td = link_to "編集", admin_user_path(user.id), class: "btn btn-sm btn-primary"
+            td = link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-primary"
+    = paginate @users

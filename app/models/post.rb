@@ -7,8 +7,6 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :category, optional: true
   
-  validate :validate_content_attachments
-  
   default_scope { where(is_active: true) } 
   
   scope :search, -> (search_param = nil){
@@ -40,7 +38,6 @@ class Post < ApplicationRecord
         post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
       end
     end
-  
     post_image.variant(resize_to_limit: [width, height]).processed
   end
 

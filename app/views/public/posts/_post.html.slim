@@ -11,6 +11,13 @@
                 .user-info-table
                   table
                     tbody
+                      tr
+                        p
+                        - if post.category
+                          i.fas.fa-folder
+                          = post.category.name
+                        - else
+                          i.fas.fa-folder
                       tr.tr-span
                         td
                           = link_to user_path(post.user_id), class: "card-link" do
@@ -31,3 +38,4 @@
             .card-body
               = content_tag :h5, link_to(post_path(post.id), class: "card-title", style: "text-decoration: none") do
                 p.post-title = post.title
+= paginate posts

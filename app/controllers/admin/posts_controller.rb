@@ -3,13 +3,13 @@ class Admin::PostsController < ApplicationController
   def index
     @categories = Category.includes(:posts)
     if params[:query].present?
-      @posts = Post.search(params[:query]).order(created_at: :desc)
+      @posts = Post.search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
       @query = params[:query]
     elsif params[:category_id]
       @category = Category.includes(:posts).find(params[:category_id])
-      @posts = @category.posts
+      @posts = @category.posts.page(params[:page]).per(10)
     else
-      @posts = Post.order(created_at: :desc)
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
   

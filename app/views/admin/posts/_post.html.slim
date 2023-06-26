@@ -10,4 +10,10 @@
           strong.mt-0.mb-1
             = post.user.name
           br
-          | #{post.title}
+          p
+            - if post.category
+              i.fas.fa-folder
+              = post.category.name
+            - else
+              i.fas.fa-folder
+          p = post.title

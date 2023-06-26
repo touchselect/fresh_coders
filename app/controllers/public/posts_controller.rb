@@ -17,15 +17,16 @@ class Public::PostsController < ApplicationController
   def index
     @categories = Category.all
     if params[:query].present?
-      @posts = Post.includes(:user, :comments).search(params[:query]).order(created_at: :desc)
+      @posts = Post.includes(:user, :comments).search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
       @query = params[:query]
     elsif params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.includes(:user, :comments)
+      @posts = @category.posts.includes(:user, :comments).page(params[:page]).per(10)
     else
-      @posts = Post.includes(:user, :comments).order(created_at: :desc)
+      @posts = Post.includes(:user, :comments).order(created_at: :desc).page(params[:page]).per(10)
     end
   end
+
 
   def show
     @post = Post.includes(comments: :user).find(params[:id])
