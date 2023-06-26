@@ -3,7 +3,8 @@
     - posts.each do |post|
       hr.comment-divider
       li.media
-        = image_tag post.get_post_image(100, 100), class: "mr-3"
+        = link_to admin_post_path(post) do
+          = image_tag post.get_post_image(100, 100), class: "mr-5"
         .media-body
           = post.created_at.strftime('%Y/%m/%d')
           span.space-divider
@@ -15,5 +16,11 @@
               i.fas.fa-folder
               = post.category.name
             - else
-              i.fas.fa-folder
+                i.fas.fa-folder
           p = post.title
+          span.favorite-count
+            i.far.fa-heart
+            = post.favorites.count
+          span.comment-count
+            i.far.fa-comment
+            = post.comments.count

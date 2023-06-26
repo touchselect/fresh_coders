@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  
+  before_action :authenticate_admin!
   def index
     @categories = Category.includes(:posts)
     if params[:query].present?
@@ -21,7 +21,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path
+    redirect_to admin_posts_path
   end
   
 end

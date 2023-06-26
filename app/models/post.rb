@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :category, optional: true
   
+  validates :title, presence: true
+  
   default_scope { where(is_active: true) } 
   
   scope :search, -> (search_param = nil){
