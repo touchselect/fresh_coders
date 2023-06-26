@@ -1,0 +1,8 @@
+.comments
+  - post.comments.each do |comment|
+    .comment
+      p = comment.user.name
+      p = comment.created_at.strftime('%Y/%m/%d')
+      p = comment.comment
+      .comment-btn
+        = link_to "削除", post_comment_path(post, comment), method: :delete, class: 'btn btn-danger', local: false, remote: true

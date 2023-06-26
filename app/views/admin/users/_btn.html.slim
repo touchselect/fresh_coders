@@ -1,0 +1,10 @@
+.btn-group-vertical.mt-3
+  = link_to admin_user_path(user.id), class: 'btn btn-outline-primary btn-block' do
+    i.fas.fa-th-list
+    | 投稿一覧
+  = link_to admin_user_drafts_path(user.id), class: "btn btn-outline-secondary btn-block" do
+    i.fas.fa-file-alt
+    | 下書き一覧
+  = link_to edit_admin_user_path(user.id), class: 'btn btn-outline-success btn-block' do
+    i.fas.fa-user-edit
+    | プロフィール編集

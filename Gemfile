@@ -61,6 +61,8 @@ gem 'devise'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'actiontext'
+gem 'kaminari'
+
 
 gem 'dotenv-rails'
 
@@ -71,3 +73,4 @@ end
 gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
+

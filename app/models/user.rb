@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorite_posts, through: :favorites, source: :post
+  has_many :favorite_posts, through: :favorites, source: :post, dependent: :destroy
   has_many :comments, dependent: :destroy
   
   has_many :active_follows, class_name: 'Follow', foreign_key: 'active_follow_id', dependent: :destroy
@@ -16,6 +16,19 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_follows, source: :active_follower
   
   has_one_attached :user_image
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
   
   def follow(user)
     active_follows.create(passive_followed: user)

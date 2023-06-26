@@ -1,0 +1,41 @@
+.row.row-cols-2
+  - posts.each do |post|
+    .col.my-3
+      = link_to post_path(post.id), class: "card w-100 shadow card-hover", style: "text-decoration: none" do
+        .row.no-gutters
+          = image_tag post.get_post_image(1920, 1080), class: "card-img-top fixed-size-image"
+        .row
+          .col-md-6
+            .user-info.d-flex.align-items-center
+              .user-info-wrapper
+                .user-info-table
+                  table
+                    tbody
+                      tr
+                        p
+                        - if post.category
+                          i.fas.fa-folder
+                          = post.category.name
+                        - else
+                          i.fas.fa-folder
+                      tr.tr-span
+                        td
+                          = link_to user_path(post.user_id), class: "card-link" do
+                            = image_tag post.user.get_user_image(20, 20), class: "user-image"
+                        td
+                          = link_to user_path(post.user_id), class: "card-link" do
+                            span.user-name = post.user.name
+                      tr
+                        td
+                          span.favorite-count
+                            i.far.fa-heart
+                            = post.favorites.count
+                        td
+                          span.comment-count
+                            i.far.fa-comment
+                            = post.comments.count
+          .col-md-6
+            .card-body
+              = content_tag :h5, link_to(post_path(post.id), class: "card-title", style: "text-decoration: none") do
+                p.post-title = post.title
+= paginate posts

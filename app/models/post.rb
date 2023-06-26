@@ -17,11 +17,30 @@ class Post < ApplicationRecord
     .where("action_text_rich_texts.body LIKE ? OR posts.title LIKE ? ", "%#{search_param}%", "%#{search_param}%")
   }
   
+  # def get_post_image(width, height)
+  #   unless post_image.attached?
+  #     file_path = Rails.root.join('app/assets/images/sample_post.jpg')
+  #     post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+  #   end
+  #   post_image.variant(resize_to_limit: [width, height]).processed
+  # end
+  
   def get_post_image(width, height)
-    if post_image.attached?
-      post_image.variant(resize_to_limit: [width, height]).processed
+    unless post_image.attached?
+      image_dir = Rails.root.join('app/assets/images/posts/')
+      image_files = Dir.glob(File.join(image_dir, '*'))
+  
+      if image_files.present?
+        random_image_path = image_files.sample
+        post_image.attach(io: File.open(random_image_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      else
+        file_path = Rails.root.join('app/assets/images/sample_post.jpg')
+        post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      end
     end
+    post_image.variant(resize_to_limit: [width, height]).processed
   end
+
   
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -30,4 +49,6 @@ class Post < ApplicationRecord
   def self.with_inactive(user_id)
     unscoped.where(is_active: false, user_id: user_id)
   end
+  
+
 end
