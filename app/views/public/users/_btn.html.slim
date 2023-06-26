@@ -1,0 +1,23 @@
+.btn-group-vertical.mt-3
+  - if current_user != user
+    - if current_user.following?(user)
+      = link_to user_follows_path(user.id), method: :delete, class: "btn btn-outline-info btn-block" do
+        i.fas.fa-check-circle
+        | フォローを外す
+    - else
+      = link_to user_follows_path(user.id), method: :post, class: "btn btn-outline-success btn-block" do
+        i.fas.fa-plus-circle
+        | フォローする
+  = link_to user_path(user.id), class: 'btn btn-outline-primary btn-block' do
+    i.fas.fa-th-list
+    | 投稿一覧
+  = link_to user_favorites_path(user.id), class: 'btn btn-outline-danger btn-block' do
+    i.fas.fa-heart
+    | いいね一覧
+  - if user == current_user
+    = link_to user_drafts_path(user.id), class: "btn btn-outline-secondary btn-block" do
+      i.fas.fa-file-alt
+      | 下書き一覧
+    = link_to edit_user_path(user.id), class: 'btn btn-outline-success btn-block' do
+      i.fas.fa-user-edit
+      | プロフィール編集

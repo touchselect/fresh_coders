@@ -1,0 +1,12 @@
+- if users.exists?
+  .row.row-cols-4.g-4
+    - users.each do |user|
+      .col
+        .follower-card.card.text-center
+          = image_tag user.get_user_image(1920, 1080)
+          .card-body
+            = link_to user_path(user.id), class: "card-link" do
+              h5.card-title = user.name
+              = render 'public/follows/count', user: user
+- else
+  p.text-center ユーザーはいません

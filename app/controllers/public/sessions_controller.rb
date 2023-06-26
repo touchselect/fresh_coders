@@ -14,18 +14,17 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if current_user.guest_user?
+      current_user.destroy
+    end
+    super
+  end
   
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to user_path(user)
-  end
-  
-  def dummy
-    redirect_to new_user_registration_path
   end
 
   protected

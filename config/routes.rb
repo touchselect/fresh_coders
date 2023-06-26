@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       end
       resource :follows, only: [:create, :destroy]
     end
-    get   'users'               => 'users#dummy'
+    get   'users'               => redirect('users/sign_up')
     get   'users/:id/favorites' => 'users#favorites', as: 'user_favorites'
     get   'users/:id/drafts'    => 'users#drafts',    as: 'user_drafts'
     get   'users/:id/following' => 'users#following', as: 'user_following'

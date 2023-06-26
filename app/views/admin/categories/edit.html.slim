@@ -1,9 +1,10 @@
 .container.w-50
-  h5.d-inline.ighlight カテゴリー編集
+  h5.d-inline.highlight カテゴリー編集
   .my-4
-    = form_with model: @category, url: admin_category_path, method: :patch do |f|
+    = form_with model: @category, url: admin_category_path, method: :patch, class: "category-form" do |f|
       table.table.table-borderless
-        tr
-          td カテゴリー名
-          td = f.text_field :name
-          td = f.submit "変更を保存", class: "btn btn-success"
+        tbody
+          tr
+            td カテゴリー名
+            td = f.text_field :name, class: "form-control"
+            td = f.submit "変更を保存", class: "btn btn-success"

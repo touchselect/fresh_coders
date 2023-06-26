@@ -1,0 +1,33 @@
+.container
+  .row.no-gutters
+    .col-md-5.col-sm-10.mx-2.mx-sm-auto.text-center.shadow-lg.rounded.px-0.my-5
+      h5.text-dark.bg-light.py-4.mb-0 新規登録
+      .form-body.p-4
+        .mx-auto.text-center
+          p
+            | ユーザー名・メールアドレス・パスワード
+            br
+            | を入力してください。
+        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fas.fa-user
+            = f.text_field :name, autofocus: true, class: "form-control", id: "inputName", placeholder: "ユーザー名"
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fas.fa-envelope
+            = f.email_field :email, autofocus: true, class: "form-control", id: "inputEmail", placeholder: "メールアドレス"
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fas.fa-lock
+            = f.password_field :password, autocomplete: "off", class: "form-control", id: "inputPassword", placeholder: "パスワード(6文字以上)"
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text aria-hidden="true"
+                i.fas.fa-check-circle
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "inputConfirmPassword", placeholder: "パスワード確認"
+          = f.submit "サインアップ", class: "btn btn-block btn-info mt-5"

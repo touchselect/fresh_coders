@@ -1,14 +1,6 @@
-.col-md-3.offset-md-1
-  .mx-auto
-    h3 = user.name
-    = image_tag user.get_user_image(100, 100)
+.col-md-3.offset-md-1.bg-light.py-4
+  .mx-auto.text-center
+    = image_tag user.get_user_image(100, 100), class: "rounded-circle"
+    h3.mt-3 = user.name
     = render 'public/follows/count', user: user
-    = render 'public/follows/btn', user: user
-    = link_to user_favorites_path(user.id), class: 'btn btn-primary' do
-      | いいね一覧
-    - if user == current_user
-      = link_to user_drafts_path(user.id), class: "btn btn-secondary" do
-        | 下書き一覧
-      - unless user.guest_user?
-        = link_to edit_user_path(user.id), class: 'btn btn-success' do
-          | プロフィール編集
+    = render 'btn', user: user

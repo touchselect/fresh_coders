@@ -11,8 +11,10 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
-  body
-    = render 'layouts/header'
+  body.d-flex.flex-column
+    header.fixed-top
+      = render 'layouts/header'
     .main
       = yield
-    = render 'layouts/footer'
+    footer.fixed-bottom
+      = render 'layouts/footer'

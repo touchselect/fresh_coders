@@ -20,14 +20,14 @@ nav.navbar.navbar-expand-lg.custom-header
         - if admin_signed_in?
           li.nav-item
             = link_to(admin_users_path, class: 'nav-link') do
-              i.fas.fa-home
+              i.fas.fa-user
               span Users
           li.nav-item
             = link_to(admin_categories_path, class: 'nav-link') do
               i.fas.fa-cogs
               span Categories
           li.nav-item
-            = link_to(posts_path, class: 'nav-link') do
+            = link_to(admin_posts_path, class: 'nav-link') do
               i.fas.fa-newspaper
               span Posts
           li.nav-item
@@ -37,8 +37,8 @@ nav.navbar.navbar-expand-lg.custom-header
         - elsif user_signed_in?
           li.nav-item
             = link_to(user_path(current_user.id), class: 'nav-link') do
-              i.fas.fa-home
-              span Home
+              i.fas.fa-user
+              span My Page
           li.nav-item
             = link_to(new_post_path, class: 'nav-link') do
               i.fas.fa-pencil-alt

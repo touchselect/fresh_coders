@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
-  before_action :ensure_guest_user, only: [:edit]
+
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:posts).find(params[:id])
     @posts = @user.posts
   end
   
@@ -35,21 +35,10 @@ class Public::UsersController < ApplicationController
 		@users = @user.followers
   end
   
-  def dummy
-    redirect_to new_user_registration_path
-  end
-  
   private
   
   def user_params
     params.require(:user).permit(:name, :email, :user_image)
   end
-  
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.guest_user?
-      redirect_to user_path(current_user)
-    end
-  end 
   
 end
