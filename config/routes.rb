@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     get   'users/:id/drafts'    => 'users#drafts',    as: 'user_drafts'
     get   'users/:id/following' => 'users#following', as: 'user_following'
     get   'users/:id/followed'  => 'users#followed',  as: 'user_followed'
-    resources :posts,    only: [:index, :show, :destory] do
+    resources :posts,    only: [:index, :show, :destroy] do
       resources :comments,  only: [:destroy]
       resource  :draft,     only: [:show, :edit,:update, :destroy]
     end
