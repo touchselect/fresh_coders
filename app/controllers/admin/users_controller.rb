@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(10)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(10)
   end
   
   def edit
@@ -22,7 +22,7 @@ class Admin::UsersController < ApplicationController
   
   def drafts
     @user = User.find(params[:id])
-    @draft_posts = Post.with_inactive(@user.id).page(params[:page]).per(10)
+    @draft_posts = Post.with_inactive(@user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
   
   private

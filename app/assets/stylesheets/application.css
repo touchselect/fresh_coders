@@ -128,7 +128,7 @@
     opacity: 0.8;
   }
   
-  .card-body {
+  .card-body .row {
     text-decoration: none;
     color: #000000;
   }
