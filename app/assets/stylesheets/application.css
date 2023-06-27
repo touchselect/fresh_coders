@@ -44,7 +44,7 @@
     
   /*homes top*/
   .container-fluid.main {
-    background-image: url("/assets/top2.jpg");
+    background-image: image-url("top2.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
