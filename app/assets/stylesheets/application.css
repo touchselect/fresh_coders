@@ -13,12 +13,7 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> 258afc518ca38e8d2a33886bc4e9bcc79d894f0a
- 
+
  body {
    min-height: 100vh;
    font-family: 'DotGothic16', sans-serif;
@@ -147,7 +142,3 @@
   .comments-counter {
     font-size: 18px;
   }
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 258afc518ca38e8d2a33886bc4e9bcc79d894f0a
