@@ -127,6 +127,11 @@
   .card-hover:hover {
     opacity: 0.8;
   }
+  
+  .card-body {
+    text-decoration: none;
+    color: #000000;
+  }
 
   /*post new*/
   .full-width-input {
