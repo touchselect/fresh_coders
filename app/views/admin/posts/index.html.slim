@@ -1,0 +1,22 @@
+.container.h-100
+  .row
+    .col-md-3.offset-md-1
+      table.table-borderless.category-table
+        thead
+          tr
+            th 
+              h2 カテゴリ
+        tbody
+          - @categories.each do |category|
+            tr
+              td.category-cell
+                = link_to admin_posts_path(category_id: category.id), class: "category-link", style: "text-decoration: none" do
+                  = category.name
+    .col-md-8
+      - if @query
+        h2 = "キーワード”#{@query}”の検索結果"
+      -elsif @category
+        h2 = "カテゴリー”#{@category.name}”の検索結果"
+      - else
+        h2 投稿一覧
+      = render 'post', posts: @posts

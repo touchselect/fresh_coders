@@ -1,4 +1,5 @@
 class Public::DraftsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_draft
   
   def show
@@ -30,6 +31,7 @@ class Public::DraftsController < ApplicationController
   end
   
   def set_draft
-    @post = Post.unscoped.where(is_active: false, id: params[:post_id]).first
+    @post = Post.unscoped.includes(:category).where(is_active: false, id: params[:post_id]).first
   end
+
 end

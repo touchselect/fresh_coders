@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Admin.create(email: 'admin@admin.com', password: 'ffffff')
+User.create(email: 'user@user.com', name: 'user', password: 'ffffff')
+Category.create(name: "質問と回答")
+Category.create(name: "プログラミング言語")
+Category.create(name: "フレームワークとライブラリ")
+Category.create(name: "ソフトウェア開発ツール")
+Category.create(name: "アルゴリズムとデータ構造")
+Category.create(name: "キャリアアドバイス")
+Category.create(name: "プロジェクトアイデア")

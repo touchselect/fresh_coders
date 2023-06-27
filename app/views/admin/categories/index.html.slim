@@ -1,0 +1,17 @@
+.container.w-50
+  h5.d-inline.highlight カテゴリー一覧
+  .my-4.w-75
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th.text-center カテゴリー
+          th.text-center アクション
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.name
+            td.text-center
+              = link_to edit_admin_category_path(category), class: "btn btn-success btn-sm mx-1", title: "編集する" do
+                i.fas.fa-edit
+              = link_to admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger btn-sm mx-1", title: "削除する" do
+                i.fas.fa-trash-alt

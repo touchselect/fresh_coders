@@ -1,0 +1,26 @@
+.container.my-5.w-75
+  h5.d-inline.highlight ユーザー一覧
+  div.my-4
+    table.table.table-hover
+      thead
+        tr
+          th ユーザーID
+          th
+          th 氏名
+          th メールアドレス
+          /th ステータス
+          th
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.id
+            td = image_tag user.get_user_image(50, 50)
+            td = user.name
+            td = user.email
+            /td
+              - if user.is_active
+                span.text-success.font-weight-bold 有効
+              - else
+                span.text-muted.font-weight-bold 退会
+            td = link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-primary"
+    = paginate @users
