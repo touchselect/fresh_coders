@@ -1,14 +1,17 @@
-.container
+
+.container.bg-light
   .row
-    div
-      h1 下書き
-      h2 = @post.title
-      p 投稿者 #{@post.user.name}
-      p = @post.created_at.strftime('%Y/%m/%d')
-      .content
-        = @post.content
-      .link-btn
-        - if @post.user == current_user
-          = link_to "編集", edit_post_draft_path(@post), class: 'btn btn-success'
-          = link_to "削除", post_draft_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
-          = link_to "下書き一覧に戻る", user_drafts_path(current_user), class: 'btn btn-secondary'
+    .col-md-8.offset-md-2
+      .post-details
+        h2 = @post.title
+        .post-meta
+          p 投稿者 #{@post.user.name}
+          p = @post.created_at.strftime('%Y/%m/%d')
+        .post-content
+          = @post.content
+        .post-actions.mt-3
+          - if @post.user == current_user
+            = link_to "編集", edit_post_draft_path(@post), class: 'btn btn-success'
+            = link_to "削除", post_draft_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+            = link_to "下書き一覧に戻る", user_drafts_path(current_user), class: 'btn btn-secondary'
+
