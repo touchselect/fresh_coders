@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+ 
  body {
    min-height: 100vh;
    font-family: 'DotGothic16', sans-serif;
@@ -44,7 +44,7 @@
     
   /*homes top*/
   .container-fluid.main {
-    background-image: image-url("top2.jpg");
+    background-image: url("/assets/top2.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
