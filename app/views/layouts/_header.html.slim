@@ -11,12 +11,20 @@ nav.navbar.navbar-expand-lg.custom-header
     .collapse.navbar-collapse#navbarNavDropdown
       ul.navbar-nav.ml-auto
         li.nav-item
-          = form_with(url: posts_path, class: "form-inline", method: :get) do |f|
-            .input-group
-              = f.text_field :query, value: params[:query], class: "form-control custom-input", placeholder: "検索", aria_label: "検索"
-              .input-group-append
-                = button_tag type: 'submit', class: 'btn btn-primary' do
-                  i.fas.fa-search
+          - if admin_signed_in?
+            = form_with(url: admin_posts_path, class: "form-inline", method: :get) do |f|
+              .input-group
+                = f.text_field :query, value: params[:query], class: "form-control custom-input", placeholder: "検索", aria_label: "検索"
+                .input-group-append
+                  = button_tag type: 'submit', class: 'btn btn-primary' do
+                    i.fas.fa-search
+          - else
+            = form_with(url: posts_path, class: "form-inline", method: :get) do |f|
+              .input-group
+                = f.text_field :query, value: params[:query], class: "form-control custom-input", placeholder: "検索", aria_label: "検索"
+                .input-group-append
+                  = button_tag type: 'submit', class: 'btn btn-primary' do
+                    i.fas.fa-search
         - if admin_signed_in?
           li.nav-item
             = link_to(admin_users_path, class: 'nav-link') do
