@@ -9,7 +9,6 @@
         .post-content
           = @post.content
         .post-actions.mt-3
-          = link_to "編集", edit_admin_post_draft_path(@post), class: 'btn btn-success'
           = link_to "削除", admin_post_draft_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
           = link_to "下書き一覧に戻る", admin_user_drafts_path(@post.user.id), class: 'btn btn-secondary'
 
