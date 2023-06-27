@@ -13,3 +13,135 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< Updated upstream
+=======
+ 
+ body {
+   min-height: 100vh;
+   font-family: 'DotGothic16', sans-serif;
+ }
+ 
+  .main {
+    min-height: 100vh;
+    background-color: #F2F2F2;
+    padding: 56px 0;
+  }
+ 
+  /*header footer*/
+  .custom-header {
+    background: linear-gradient(to right, #20e0ff, #20c2ff);
+  }
+
+  .custom-header .navbar-brand,
+  .custom-header .nav-link {
+    color: #FFFFFF;
+  }
+
+  footer {
+    background: linear-gradient(to right, #20e0ff, #169cb2);
+    color: #FFFFFF;
+    height: 56px;
+  }
+  
+    
+  /*homes top*/
+  .container-fluid.main {
+    background-image: image-url("top2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: #FFFFFF;
+  }
+  
+  .freshcoders-heading {
+    font-size: 40px;
+  }
+  
+  .big-text {
+    font-size: 24px;
+  }
+  
+  .btn-equal-width {
+    flex: 1;
+    width: 300px;
+  }
+
+  /*post index*/
+  .category-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .category-table th,
+  .category-table td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  .category-table th {
+    background-color: #f2f2f2;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  .category-table td {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
+  
+  .category-table .category-cell a {
+    color: #000000;
+  }
+  
+  .user-info {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .user-name {
+  font-size: 20px;
+  color: #000000;
+  }
+
+  .fixed-size-image {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  }
+  
+  .post-title {
+    font-size: 24px;
+    color: #000000;
+    
+  }
+  
+  .user-info {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .user-info-table {
+    color: #000000;
+  }
+  
+  .card-hover:hover {
+    opacity: 0.8;
+  }
+
+  /*post new*/
+  .full-width-input {
+    width: 100%;
+  }
+  
+  /*post show*/
+  .space-divider {
+    margin: 0 10px;
+  }
+  
+  .post-favorite,
+  .comments-counter {
+    font-size: 18px;
+  }
+>>>>>>> Stashed changes
