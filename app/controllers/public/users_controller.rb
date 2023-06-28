@@ -8,6 +8,9 @@ class Public::UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to user_path(@user)
+    end
   end
   
   def update
