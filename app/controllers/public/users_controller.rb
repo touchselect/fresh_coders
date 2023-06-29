@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :favorites, :following, :followed]
+  before_action :authenticate_user!
 
   def show
     @user = User.includes(:posts).find(params[:id])

@@ -8,17 +8,18 @@
           p = @post.created_at.strftime('%Y/%m/%d')
         .post-content
           = @post.content
-        .post-actions.mt-3
-          - if @post.user == current_user
-            = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
-            = link_to "削除", post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
-        .post-favorite-comments.d-flex
-          div class="favorite-#{@post.id} post-favorite"
-            = render "public/favorites/btn", post: @post
-          span.space-divider
-          .comments-counter
-            i.fas.fa-comments
-            span = @post.comments.count
-        .comments-index
-          = render 'public/comments/index', post: @post
-        = render 'public/comments/form', post: @post, comment: @comment
+        - if current_user
+          .post-actions.mt-3
+            - if @post.user == current_user
+              = link_to "編集", edit_post_path(@post), class: 'btn btn-success'
+              = link_to "削除", post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'
+          .post-favorite-comments.d-flex
+            div class="favorite-#{@post.id} post-favorite"
+              = render "public/favorites/btn", post: @post
+            span.space-divider
+            .comments-counter
+              i.fas.fa-comments
+              span = @post.comments.count
+          .comments-index
+            = render 'public/comments/index', post: @post
+          = render 'public/comments/form', post: @post, comment: @comment
