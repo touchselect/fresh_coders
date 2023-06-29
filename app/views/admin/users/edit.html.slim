@@ -4,7 +4,7 @@
     .col-md-8
       h2.text-center プロフィール編集
       div.profile-form
-        = form_with(model: @user) do |f|
+        = form_with(model: @user, url: admin_user_path) do |f|
           .form-group
             = f.label :email
             br
